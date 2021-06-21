@@ -1,0 +1,44 @@
+<script>
+	const datags = <?!= JSON.stringify(data) ?>;
+  console.log('datatgs', datags)
+</script>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<base target="_top">
+</head>
+
+<body>
+	<h1>Liste des employées :</h1>
+	<table class="table" style="border: 1px solid black;"></table>
+
+	<script>
+		const table = document.querySelector('table');
+
+  const tableHead = datags.shift();
+    const firstRow = document.createElement("tr")
+    tableHead.forEach(el => {
+      const th = document.createElement('th');
+      th.style.border = "1px solid black";
+      th.textContent = el
+      firstRow.appendChild(th)
+    })
+    table.appendChild(firstRow);
+
+    datags.forEach(item => {
+      const tr = document.createElement('tr');
+      item.forEach(str => {
+        const td = document.createElement('td')
+        td.style.border = "1px solid black";
+        td.textContent = str;
+        tr.appendChild(td)
+      })
+      table.appendChild(tr)
+    })
+
+	</script>
+</body>
+
+</html>
